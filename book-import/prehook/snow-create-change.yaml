@@ -1,0 +1,16 @@
+---
+apiVersion: tower.ansible.com/v1alpha1
+kind: AnsibleJob
+metadata:
+  name: snow-create-change
+  namespace: pacman-app
+  labels:
+    app.kubernetes.io/name: bookimport
+spec:
+  tower_auth_secret: toweraccess
+  job_template_name: snow-create-change
+  extra_vars:
+    app_name: bookimport
+    change_request:
+      priority: low
+      description: "xyz - The following resources have been updated: [...]"
